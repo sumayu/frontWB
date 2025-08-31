@@ -9,7 +9,7 @@ export default function Home() {
   const [activeService, setActiveService] = useState<number | null>(null);
 
   const services = [
-    { title: "Работа под ключ", description: "Полное ведение бизнеса на WB", icon: Briefcase, details: "Подробнее в лс" },
+    { title: "Получите готовый бизнес с нуля", description: "Полное ведение бизнеса на WB", icon: Briefcase, details: "Подробнее в лс" },
     { title: "Настройка рекламы", description: "Внутренняя и внешняя реклама WB", icon: Target, details: "Поисковое продвижение и РК" },
     { title: "Подбор товара", description: "Анализ и поиск прибыльных ниш", icon: Search, details: "Исследование конкурентов" },
     { title: "SEO-оптимизация", description: "Улучшение позиций в поиске", icon: TrendingUp, details: "Семантика и описания" },
