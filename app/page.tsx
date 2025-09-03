@@ -17,9 +17,22 @@ export default function Home() {
     { title: "Разовые услуги", description: "Любая сфера работы с WB", icon: Zap, details: "Гибкий подход" },
   ];
 
-  return (
-    <div className="min-h-screen bg-gray-800 text-white px-6">
-      
+   return (
+    <div className="min-h-screen bg-gray-800 text-white px-6 relative">
+      {/* Логотип в правом верхнем углу */}
+      <img 
+        src="/logo.png" 
+        alt="Логотип" 
+        className="fixed top-4 right-4 w-20 h-20 z-50 pointer-events-none"
+      />
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden py-20">
+        <div className="absolute inset-0 bg-gray-800/50" />
+        <div className="relative max-w-7xl mx-auto text-center">
+          {/* ... остальной код без изменений */}
+        </div>
+      </section>
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20">
         <div className="absolute inset-0 bg-gray-800/50" />
