@@ -19,31 +19,11 @@ export default function Home() {
   ];
 
   const cases = [
-    {
-      title: "Кейс 1",
-      image: "/case1.png",
-      description: "Грамотная проработка рекламы и СЕО карточки приносят результат с первой недели!",
-    },
-    {
-      title: "Кейс 2",
-      image: "/case2.png",
-      description: "Вышли на ежемесячное ведение кабинета и выросли за счет внутренней рекламы. Товар постоянного спроса!",
-    },
-    {
-      title: "Кейс 3",
-      image: "/case3.png",
-      description: "Ежемесячное ведение, результат работы за 3 недели.",
-    },
-    {
-      title: "Кейс 4",
-      image: "/case4.png",
-      description: "Первый месяц сотрудничества, ниши косметики. Пока показатели выросли на 1.4 млн, показатели ДРР снизились, ЧП соответственно выросла.",
-    },
-    {
-      title: "Кейс 5",
-      image: "/case5.png",
-      description: "Неделя работы с рекламой перед прибыльным сезоном на маркетплейсах. Подготовка к сезону, чтобы максимально увеличить продажи.",
-    },
+    { title: "Кейс 1", text: "Грамотная проработка рекламы и SEO карточки приносят результат с первой недели!" },
+    { title: "Кейс 2", text: "Вышли на ежемесячное ведение кабинета и выросли за счет внутренней рекламы. Товар постоянного спроса." },
+    { title: "Кейс 3", text: "Ежемесячное ведение, результат работы за 3 недели." },
+    { title: "Кейс 4", text: "Первый месяц сотрудничества, ниши косметики, рост по алгоритмам WB, показатели DRR снизились, ЧП вырос." },
+    { title: "Кейс 5", text: "Неделя работы с рекламой перед прибыльным сезоном на маркетплейсах." },
   ];
 
   return (
@@ -52,14 +32,13 @@ export default function Home() {
       <img 
         src="/logo.png" 
         alt="Логотип" 
-        className="absolute top-4 right-4 w-20 h-20 z-50 pointer-events-none"
+        className="fixed top-4 right-4 w-20 h-20 z-50 pointer-events-none"
       />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20">
         <div className="absolute inset-0 bg-gray-800/50" />
         <div className="relative max-w-7xl mx-auto text-center">
-          {/* Плашка команды */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-full mb-8 mx-auto">
             <Star className="w-4 h-4 text-amber-400" />
             <span className="text-amber-300 text-sm font-medium">Действующая команда менеджеров</span>
@@ -73,7 +52,6 @@ export default function Home() {
             Наша команда с большим практическим опытом по продвижению и ведению бизнеса на WB.
           </p>
 
-          {/* Плашки с опытом */}
           <div className="flex flex-wrap justify-center items-center gap-6 text-gray-400 mb-12">
             <div className="flex items-center gap-2">
               <Users className="w-5 h-5 text-blue-400" />
@@ -93,53 +71,62 @@ export default function Home() {
 
       {/* Карусель кейсов */}
       <section className="max-w-7xl mx-auto mb-16 overflow-hidden relative">
-        <div className="flex gap-6 overflow-x-auto scroll-smooth">
+        <div 
+          className="scroll-container gap-6"
+          onMouseEnter={(e) => e.currentTarget.style.animationPlayState = "paused"}
+          onMouseLeave={(e) => e.currentTarget.style.animationPlayState = "running"}
+        >
           {cases.map((caseItem, index) => (
             <div
               key={index}
               className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
               onClick={() => setActiveCase(index)}
             >
-              <img src={caseItem.image} alt={caseItem.title} className="rounded-lg mb-4" />
+              <img src={`/case${index + 1}.jpg`} alt={caseItem.title} className="rounded-lg mb-4" />
+              <p className="text-gray-300 text-center">{caseItem.title}</p>
+            </div>
+          ))}
+          {cases.map((caseItem, index) => (
+            <div
+              key={`dup-${index}`}
+              className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
+              onClick={() => setActiveCase(index)}
+            >
+              <img src={`/case${index + 1}.jpg`} alt={caseItem.title} className="rounded-lg mb-4" />
               <p className="text-gray-300 text-center">{caseItem.title}</p>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* Модальное окно кейса */}
-      {activeCase !== null && (
-        <div
-          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
-          onClick={() => setActiveCase(null)}
-        >
+        {/* Модальное окно для кейсов */}
+        {activeCase !== null && (
           <div
-            className="bg-gray-700 border border-gray-600 rounded-xl p-8 max-w-lg w-full relative animate-fadeIn"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+            onClick={() => setActiveCase(null)}
           >
-            <button
-              className="absolute top-4 right-4 text-white text-xl font-bold"
-              onClick={() => setActiveCase(null)}
+            <div
+              className="bg-gray-700 border border-gray-600 rounded-xl p-8 max-w-lg w-full relative animate-fadeIn"
+              onClick={(e) => e.stopPropagation()}
             >
-              ×
-            </button>
-            <img
-              src={cases[activeCase].image}
-              alt={cases[activeCase].title}
-              className="rounded-lg mb-4 w-full"
-            />
-            <h3 className="text-2xl font-bold mb-4 text-white">{cases[activeCase].title}</h3>
-            <p className="text-gray-300 mb-4">{cases[activeCase].description}</p>
-            <Button
-              variant="ghost"
-              onClick={() => setActiveCase(null)}
-              className="border border-white/30 text-white hover:bg-white/10"
-            >
-              Закрыть
-            </Button>
+              <button
+                className="absolute top-4 right-4 text-white text-xl font-bold"
+                onClick={() => setActiveCase(null)}
+              >
+                ×
+              </button>
+              <h3 className="text-2xl font-bold mb-4 text-white">{cases[activeCase].title}</h3>
+              <p className="text-gray-300 mb-4">{cases[activeCase].text}</p>
+              <Button
+                variant="ghost"
+                onClick={() => setActiveCase(null)}
+                className="border border-white/30 text-white hover:bg-white/10"
+              >
+                Закрыть
+              </Button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </section>
 
       {/* Услуги */}
       <section className="max-w-7xl mx-auto mb-16">
@@ -164,7 +151,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Модальное окно услуг */}
+        {/* Модальное окно для услуг */}
         {activeService !== null && (
           <div
             className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
@@ -219,7 +206,7 @@ export default function Home() {
           </p>
           
           <a 
-            href="https://t.me/portfolioFooskosWB/4" 
+            href="https://t.me/Fooskos" 
             target="_blank" 
             rel="noopener noreferrer"
             className="group"
