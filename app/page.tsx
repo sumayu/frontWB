@@ -31,7 +31,7 @@ export default function Home() {
 <div className="bg-gray-800 text-white px-6 relative">
     {/* Логотип позиционируется относительно контейнера */}
   <img 
-    src="/logo2.jpg" 
+    src="/logo2.png" 
     alt="Логотип" 
     className="absolute top-4 right-4 w-20 h-20"
   />
