@@ -28,14 +28,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-800 text-white px-6 relative">
-   <div className="min-h-screen bg-gray-800 text-white px-6 relative">
-  {/* Логотип позиционируется относительно контейнера */}
+<div className="bg-gray-800 text-white px-6 relative">
+    {/* Логотип позиционируется относительно контейнера */}
   <img 
     src="/logo.png" 
     alt="Логотип" 
     className="absolute top-4 right-4 w-20 h-20"
   />
 </div>
+
 
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20">
