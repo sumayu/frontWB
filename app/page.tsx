@@ -21,7 +21,7 @@ export default function Home() {
     <div className="min-h-screen bg-gray-800 text-white px-6 relative">
       {/* Логотип в правом верхнем углу */}
       <img 
-        src="public/logo.png" 
+        src="public/logo.jpg" 
         alt="Логотип" 
         className="fixed top-4 right-4 w-20 h-20 z-50 pointer-events-none"
       />
