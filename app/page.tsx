@@ -33,7 +33,7 @@ export default function Home() {
   <img 
     src="/logo2.png" 
     alt="Логотип" 
-  className="absolute top-4 right-4 w-20 h-20 md:w-24 md:h-24 sm:w-16 sm:h-16"  />
+className="absolute top-4 right-4 w-20 h-20 md:w-24 md:h-24 sm:w-16 sm:h-16" />
 </div>
 
 
