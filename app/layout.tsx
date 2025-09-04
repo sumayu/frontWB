@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru">
       <head>
-<link rel="icon" href="/logo2.png?v=1" type="image/png" />
+<link rel="icon" href="/favicon.png" sizes="32x32" type="image/png" />
       </head>
       <body>{children}</body>
     </html>
