@@ -30,10 +30,11 @@ export default function Home() {
     <div className="min-h-screen bg-gray-800 text-white px-6 relative">
 <div className="bg-gray-800 text-white px-6 relative">
     {/* Логотип позиционируется относительно контейнера */}
-  <img 
-    src="/logo2.png" 
-    alt="Логотип" 
-className="absolute top-4 right-4 w-20 h-20 md:w-24 md:h-24 sm:w-16 sm:h-16" />
+<img 
+  src="/logo2.png" 
+  alt="Логотип" 
+  className="fixed top-4 right-4 w-16 h-16 md:w-20 md:h-20 z-50"
+/>
 </div>
 
 
