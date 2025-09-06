@@ -129,13 +129,12 @@ export default function Home() {
         ×
       </button>
 
-      {/* Фото (клик для открытия полного размера) */}
-      <img
-        src={`/case${activeCase + 1}.jpg`}
-        alt={`Case ${activeCase + 1}`}
-        className="rounded-2xl w-full max-h-[55vh] object-cover mb-6 border border-gray-700 shadow-lg cursor-zoom-in transition-transform hover:scale-105"
-        onClick={() => setFullImage(`/case${activeCase + 1}.jpg`)}
-      />
+{/* Фото */}
+<img
+  src={`/case${activeCase + 1}.jpg`}
+  alt={`Case ${activeCase + 1}`}
+  className="rounded-2xl w-full max-h-[70vh] object-contain mb-6 border border-gray-700 shadow-lg"
+/>
 
       {/* Текст */}
       <p className="text-gray-300 text-center text-lg mb-6 px-4 md:px-8">
