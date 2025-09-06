@@ -113,37 +113,43 @@ export default function Home() {
   </div>
 
   {/* Модальное окно для кейсов */}
-  {activeCase !== null && (
+{activeCase !== null && (
+  <div
+    className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+    onClick={() => setActiveCase(null)}
+  >
     <div
-      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
-      onClick={() => setActiveCase(null)}
+      className="bg-gray-700 border border-gray-600 rounded-xl p-6 max-w-lg w-full max-h-[90vh] flex flex-col items-center animate-fadeIn relative"
+      onClick={(e) => e.stopPropagation()}
     >
-      <div
-        className="bg-gray-700 border border-gray-600 rounded-xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto animate-fadeIn relative"
-        onClick={(e) => e.stopPropagation()}
+      <button
+        className="absolute top-4 right-4 text-white text-xl font-bold"
+        onClick={() => setActiveCase(null)}
       >
-        <button
-          className="absolute top-4 right-4 text-white text-xl font-bold"
-          onClick={() => setActiveCase(null)}
-        >
-          ×
-        </button>
-        <img
-          src={`/case${activeCase + 1}.jpg`}
-          alt={`Case ${activeCase + 1}`}
-          className="rounded-lg mb-4 w-full h-auto"
-        />
-        <p className="text-gray-300 text-lg">{cases[activeCase].text}</p>
-        <Button
-          variant="ghost"
-          onClick={() => setActiveCase(null)}
-          className="border border-white/30 text-white hover:bg-white/10 mt-4"
-        >
-          Закрыть
-        </Button>
-      </div>
+        ×
+      </button>
+
+      {/* Фото */}
+      <img
+        src={`/case${activeCase + 1}.jpg`}
+        alt={`Case ${activeCase + 1}`}
+        className="rounded-lg mb-4 w-full max-h-[50vh] object-contain"
+      />
+
+      {/* Текст */}
+      <p className="text-gray-300 text-lg text-center">{cases[activeCase].text}</p>
+
+      <Button
+        variant="ghost"
+        onClick={() => setActiveCase(null)}
+        className="border border-white/30 text-white hover:bg-white/10 mt-4"
+      >
+        Закрыть
+      </Button>
     </div>
-  )}
+  </div>
+)}
+
 </section>
 
       {/* Услуги */}
