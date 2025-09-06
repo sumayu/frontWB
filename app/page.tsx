@@ -1,4 +1,4 @@
-"use client";
+"use client"; // <- обязательно первой строкой
 
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,6 +8,8 @@ import { Briefcase, Target, Search, TrendingUp, Settings, Zap, Users, Star } fro
 export default function Home() {
   const [activeService, setActiveService] = useState<number | null>(null);
   const [activeCase, setActiveCase] = useState<number | null>(null);
+  const [fullImage, setFullImage] = useState<string | null>(null); // <- добавляем сюда состояние для лайтбокса
+
 
   const services = [
     { title: "Работа под ключ", description: "Получите готовый бизнес с нуля", icon: Briefcase, details: "Подробнее в лс" },
@@ -109,19 +111,14 @@ export default function Home() {
   </div>
 
   {/* Модальное окно */}
+{/* Модальное окно */}
 {activeCase !== null && (
   <div
-    className="fixed inset-0 flex items-center justify-center z-50 p-4"
+    className="fixed inset-0 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
     onClick={() => setActiveCase(null)}
   >
-    {/* Размытый фон */}
     <div
-      className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-    />
-
-    {/* Контент модального окна */}
-    <div
-      className="relative bg-gray-900 rounded-3xl shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] flex flex-col items-center overflow-hidden animate-scaleIn"
+      className="bg-gray-900 rounded-3xl shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] flex flex-col items-center overflow-hidden animate-scaleIn relative transition-all"
       onClick={(e) => e.stopPropagation()}
     >
       {/* Кнопка закрытия */}
@@ -132,11 +129,12 @@ export default function Home() {
         ×
       </button>
 
-      {/* Фото */}
+      {/* Фото (клик для открытия полного размера) */}
       <img
         src={`/case${activeCase + 1}.jpg`}
         alt={`Case ${activeCase + 1}`}
-        className="rounded-2xl w-full max-h-[55vh] object-cover mb-6 border border-gray-700 shadow-lg"
+        className="rounded-2xl w-full max-h-[55vh] object-cover mb-6 border border-gray-700 shadow-lg cursor-zoom-in transition-transform hover:scale-105"
+        onClick={() => setFullImage(`/case${activeCase + 1}.jpg`)}
       />
 
       {/* Текст */}
@@ -154,6 +152,35 @@ export default function Home() {
     </div>
   </div>
 )}
+
+{/* Лайтбокс для полного изображения */}
+{fullImage && (
+  <div
+    className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-60 p-4"
+    onClick={() => setFullImage(null)}
+  >
+    <div
+      className="relative max-w-[90vw] max-h-[90vh] animate-scaleIn"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Кнопка закрытия */}
+      <button
+        className="absolute top-2 right-2 text-white text-3xl font-bold hover:text-amber-400 transition-colors z-50"
+        onClick={() => setFullImage(null)}
+      >
+        ×
+      </button>
+
+      {/* Полноразмерная картинка */}
+      <img
+        src={fullImage}
+        alt="Full Case"
+        className="rounded-3xl border-4 border-amber-500 shadow-2xl max-w-full max-h-full object-contain"
+      />
+    </div>
+  </div>
+)}
+
 
 </section>
 
