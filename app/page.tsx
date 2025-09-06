@@ -74,9 +74,6 @@ export default function Home() {
       </section>
 
       {/* Карусель кейсов */}
-    {/* Карусель кейсов */}
-
-{/* Карусель кейсов */}
 <section className="max-w-7xl mx-auto mb-16 overflow-hidden relative">
   <div 
     className="scroll-container gap-6"
@@ -86,71 +83,61 @@ export default function Home() {
     {cases.map((caseItem, index) => (
       <div
         key={index}
-        className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
+        className="flex-shrink-0 w-60 bg-gray-800 p-4 rounded-xl cursor-pointer hover:scale-105 transition-transform shadow-lg"
         onClick={() => setActiveCase(index)}
       >
         <img 
           src={`/case${index + 1}.jpg`} 
           alt={`Case ${index + 1}`} 
-          className="rounded-lg mb-4 w-full h-auto" 
-        />
-        {/* Текст убран, показываем только в модальном окне */}
-      </div>
-    ))}
-    {cases.map((caseItem, index) => (
-      <div
-        key={`dup-${index}`}
-        className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
-        onClick={() => setActiveCase(index)}
-      >
-        <img 
-          src={`/case${index + 1}.jpg`} 
-          alt={`Case ${index + 1}`} 
-          className="rounded-lg mb-4 w-full h-auto" 
+          className="rounded-lg mb-2 w-full h-40 object-cover"
         />
       </div>
     ))}
   </div>
 
-  {/* Модальное окно для кейсов */}
-{activeCase !== null && (
-  <div
-    className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
-    onClick={() => setActiveCase(null)}
-  >
+  {/* Модальное окно */}
+  {activeCase !== null && (
     <div
-      className="bg-gray-700 border border-gray-600 rounded-xl p-6 max-w-lg w-full max-h-[90vh] flex flex-col items-center animate-fadeIn relative"
-      onClick={(e) => e.stopPropagation()}
+      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+      onClick={() => setActiveCase(null)}
     >
-      <button
-        className="absolute top-4 right-4 text-white text-xl font-bold"
-        onClick={() => setActiveCase(null)}
+      <div
+        className="bg-gray-800 rounded-2xl shadow-2xl p-6 w-full max-w-xl max-h-[90vh] flex flex-col items-center overflow-hidden animate-fadeIn relative"
+        onClick={(e) => e.stopPropagation()}
       >
-        ×
-      </button>
+        {/* Кнопка закрытия */}
+        <button
+          className="absolute top-4 right-4 text-white text-2xl font-bold hover:text-amber-400 transition-colors"
+          onClick={() => setActiveCase(null)}
+        >
+          ×
+        </button>
 
-      {/* Фото */}
-      <img
-        src={`/case${activeCase + 1}.jpg`}
-        alt={`Case ${activeCase + 1}`}
-        className="rounded-lg mb-4 w-full max-h-[50vh] object-contain"
-      />
+        {/* Фото */}
+        <img
+          src={`/case${activeCase + 1}.jpg`}
+          alt={`Case ${activeCase + 1}`}
+          className="rounded-xl w-full max-h-[50vh] object-contain mb-4"
+        />
 
-      {/* Текст */}
-      <p className="text-gray-300 text-lg text-center">{cases[activeCase].text}</p>
+        {/* Текст */}
+        <p className="text-gray-300 text-center text-lg mb-4 px-2 md:px-6">
+          {cases[activeCase].text}
+        </p>
 
-      <Button
-        variant="ghost"
-        onClick={() => setActiveCase(null)}
-        className="border border-white/30 text-white hover:bg-white/10 mt-4"
-      >
-        Закрыть
-      </Button>
+        {/* Кнопка закрытия */}
+        <Button
+          variant="outline"
+          onClick={() => setActiveCase(null)}
+          className="mt-auto px-8 py-2 rounded-full border border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-white transition-all"
+        >
+          Закрыть
+        </Button>
+      </div>
     </div>
-  </div>
-)}
-
+  )}
 </section>
+
 
       {/* Услуги */}
       <section className="max-w-7xl mx-auto mb-16">
