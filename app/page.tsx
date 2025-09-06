@@ -75,6 +75,8 @@ export default function Home() {
 
       {/* Карусель кейсов */}
     {/* Карусель кейсов */}
+
+{/* Карусель кейсов */}
 <section className="max-w-7xl mx-auto mb-16 overflow-hidden relative">
   <div 
     className="scroll-container gap-6"
@@ -87,8 +89,12 @@ export default function Home() {
         className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
         onClick={() => setActiveCase(index)}
       >
-        <img src={`/case${index + 1}.jpg`} alt={`Case ${index + 1}`} className="rounded-lg mb-4" />
-        <p className="text-gray-300 text-center">{caseItem.text}</p> {/* Показываем текст вместо title */}
+        <img 
+          src={`/case${index + 1}.jpg`} 
+          alt={`Case ${index + 1}`} 
+          className="rounded-lg mb-4 w-full h-auto" 
+        />
+        {/* Текст убран, показываем только в модальном окне */}
       </div>
     ))}
     {cases.map((caseItem, index) => (
@@ -97,8 +103,11 @@ export default function Home() {
         className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
         onClick={() => setActiveCase(index)}
       >
-        <img src={`/case${index + 1}.jpg`} alt={`Case ${index + 1}`} className="rounded-lg mb-4" />
-        <p className="text-gray-300 text-center">{caseItem.text}</p>
+        <img 
+          src={`/case${index + 1}.jpg`} 
+          alt={`Case ${index + 1}`} 
+          className="rounded-lg mb-4 w-full h-auto" 
+        />
       </div>
     ))}
   </div>
@@ -106,11 +115,11 @@ export default function Home() {
   {/* Модальное окно для кейсов */}
   {activeCase !== null && (
     <div
-      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
       onClick={() => setActiveCase(null)}
     >
       <div
-        className="bg-gray-700 border border-gray-600 rounded-xl p-8 max-w-lg w-full relative animate-fadeIn"
+        className="bg-gray-700 border border-gray-600 rounded-xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto animate-fadeIn relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
