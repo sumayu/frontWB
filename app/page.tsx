@@ -73,7 +73,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Карусель кейсов */}
+{/* Карусель кейсов */}
 <section className="max-w-7xl mx-auto mb-16 overflow-hidden relative">
   <div 
     className="scroll-container gap-6"
@@ -83,13 +83,26 @@ export default function Home() {
     {cases.map((caseItem, index) => (
       <div
         key={index}
-        className="flex-shrink-0 w-60 bg-gray-800 p-4 rounded-xl cursor-pointer hover:scale-105 transition-transform shadow-lg"
+        className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
         onClick={() => setActiveCase(index)}
       >
         <img 
           src={`/case${index + 1}.jpg`} 
           alt={`Case ${index + 1}`} 
-          className="rounded-lg mb-2 w-full h-40 object-cover"
+          className="rounded-lg mb-4 w-full h-auto"
+        />
+      </div>
+    ))}
+    {cases.map((caseItem, index) => (
+      <div
+        key={`dup-${index}`}
+        className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
+        onClick={() => setActiveCase(index)}
+      >
+        <img 
+          src={`/case${index + 1}.jpg`} 
+          alt={`Case ${index + 1}`} 
+          className="rounded-lg mb-4 w-full h-auto"
         />
       </div>
     ))}
@@ -137,7 +150,6 @@ export default function Home() {
     </div>
   )}
 </section>
-
 
       {/* Услуги */}
       <section className="max-w-7xl mx-auto mb-16">
