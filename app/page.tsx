@@ -108,47 +108,47 @@ export default function Home() {
     ))}
   </div>
 
-  {/* Модальное окно */}
-  {activeCase !== null && (
+ {/* Модальное окно */}
+{activeCase !== null && (
+  <div
+    className="fixed inset-0 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+    onClick={() => setActiveCase(null)}
+  >
     <div
-      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
-      onClick={() => setActiveCase(null)}
+      className="bg-gray-900 rounded-3xl shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] flex flex-col items-center overflow-hidden animate-fadeIn scale-95 opacity-0 animate-scaleIn relative transition-all"
+      onClick={(e) => e.stopPropagation()}
     >
-      <div
-        className="bg-gray-800 rounded-2xl shadow-2xl p-6 w-full max-w-xl max-h-[90vh] flex flex-col items-center overflow-hidden animate-fadeIn relative"
-        onClick={(e) => e.stopPropagation()}
+      {/* Кнопка закрытия */}
+      <button
+        className="absolute top-4 right-4 text-gray-200 text-3xl font-bold hover:text-amber-400 transition-colors"
+        onClick={() => setActiveCase(null)}
       >
-        {/* Кнопка закрытия */}
-        <button
-          className="absolute top-4 right-4 text-white text-2xl font-bold hover:text-amber-400 transition-colors"
-          onClick={() => setActiveCase(null)}
-        >
-          ×
-        </button>
+        ×
+      </button>
 
-        {/* Фото */}
-        <img
-          src={`/case${activeCase + 1}.jpg`}
-          alt={`Case ${activeCase + 1}`}
-          className="rounded-xl w-full max-h-[50vh] object-contain mb-4"
-        />
+      {/* Фото */}
+      <img
+        src={`/case${activeCase + 1}.jpg`}
+        alt={`Case ${activeCase + 1}`}
+        className="rounded-2xl w-full max-h-[55vh] object-cover mb-6 border border-gray-700 shadow-lg"
+      />
 
-        {/* Текст */}
-        <p className="text-gray-300 text-center text-lg mb-4 px-2 md:px-6">
-          {cases[activeCase].text}
-        </p>
+      {/* Текст */}
+      <p className="text-gray-300 text-center text-lg mb-6 px-4 md:px-8">
+        {cases[activeCase].text}
+      </p>
 
-        {/* Кнопка закрытия */}
-        <Button
-          variant="outline"
-          onClick={() => setActiveCase(null)}
-          className="mt-auto px-8 py-2 rounded-full border border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-white transition-all"
-        >
-          Закрыть
-        </Button>
-      </div>
+      {/* Кнопка закрытия */}
+      <button
+        onClick={() => setActiveCase(null)}
+        className="mt-auto px-10 py-3 rounded-full border border-amber-500 text-amber-400 hover:bg-amber-500 hover:text-white shadow-lg transition-all duration-300"
+      >
+        Закрыть
+      </button>
     </div>
-  )}
+  </div>
+)}
+
 </section>
 
       {/* Услуги */}
