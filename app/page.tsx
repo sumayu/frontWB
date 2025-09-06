@@ -108,14 +108,20 @@ export default function Home() {
     ))}
   </div>
 
- {/* Модальное окно */}
+  {/* Модальное окно */}
 {activeCase !== null && (
   <div
-    className="fixed inset-0 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+    className="fixed inset-0 flex items-center justify-center z-50 p-4"
     onClick={() => setActiveCase(null)}
   >
+    {/* Размытый фон */}
     <div
-      className="bg-gray-900 rounded-3xl shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] flex flex-col items-center overflow-hidden animate-fadeIn scale-95 opacity-0 animate-scaleIn relative transition-all"
+      className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+    />
+
+    {/* Контент модального окна */}
+    <div
+      className="relative bg-gray-900 rounded-3xl shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] flex flex-col items-center overflow-hidden animate-scaleIn"
       onClick={(e) => e.stopPropagation()}
     >
       {/* Кнопка закрытия */}
