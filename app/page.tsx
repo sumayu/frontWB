@@ -74,63 +74,68 @@ export default function Home() {
       </section>
 
       {/* Карусель кейсов */}
-      <section className="max-w-7xl mx-auto mb-16 overflow-hidden relative">
-        <div 
-          className="scroll-container gap-6"
-          onMouseEnter={(e) => e.currentTarget.style.animationPlayState = "paused"}
-          onMouseLeave={(e) => e.currentTarget.style.animationPlayState = "running"}
-        >
-          {cases.map((caseItem, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
-              onClick={() => setActiveCase(index)}
-            >
-              <img src={`/case${index + 1}.jpg`} alt={caseItem.title} className="rounded-lg mb-4" />
-              <p className="text-gray-300 text-center">{caseItem.title}</p>
-            </div>
-          ))}
-          {cases.map((caseItem, index) => (
-            <div
-              key={`dup-${index}`}
-              className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
-              onClick={() => setActiveCase(index)}
-            >
-              <img src={`/case${index + 1}.jpg`} alt={caseItem.title} className="rounded-lg mb-4" />
-              <p className="text-gray-300 text-center">{caseItem.title}</p>
-            </div>
-          ))}
-        </div>
+    {/* Карусель кейсов */}
+<section className="max-w-7xl mx-auto mb-16 overflow-hidden relative">
+  <div 
+    className="scroll-container gap-6"
+    onMouseEnter={(e) => e.currentTarget.style.animationPlayState = "paused"}
+    onMouseLeave={(e) => e.currentTarget.style.animationPlayState = "running"}
+  >
+    {cases.map((caseItem, index) => (
+      <div
+        key={index}
+        className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
+        onClick={() => setActiveCase(index)}
+      >
+        <img src={`/case${index + 1}.jpg`} alt={`Case ${index + 1}`} className="rounded-lg mb-4" />
+        <p className="text-gray-300 text-center">{caseItem.text}</p> {/* Показываем текст вместо title */}
+      </div>
+    ))}
+    {cases.map((caseItem, index) => (
+      <div
+        key={`dup-${index}`}
+        className="flex-shrink-0 w-60 bg-gray-800 p-6 rounded-xl cursor-pointer hover:scale-105 transition-transform"
+        onClick={() => setActiveCase(index)}
+      >
+        <img src={`/case${index + 1}.jpg`} alt={`Case ${index + 1}`} className="rounded-lg mb-4" />
+        <p className="text-gray-300 text-center">{caseItem.text}</p>
+      </div>
+    ))}
+  </div>
 
-        {/* Модальное окно для кейсов */}
-        {activeCase !== null && (
-          <div
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
-            onClick={() => setActiveCase(null)}
-          >
-            <div
-              className="bg-gray-700 border border-gray-600 rounded-xl p-8 max-w-lg w-full relative animate-fadeIn"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="absolute top-4 right-4 text-white text-xl font-bold"
-                onClick={() => setActiveCase(null)}
-              >
-                ×
-              </button>
-              <h3 className="text-2xl font-bold mb-4 text-white">{cases[activeCase].title}</h3>
-              <p className="text-gray-300 mb-4">{cases[activeCase].text}</p>
-              <Button
-                variant="ghost"
-                onClick={() => setActiveCase(null)}
-                className="border border-white/30 text-white hover:bg-white/10"
-              >
-                Закрыть
-              </Button>
-            </div>
-          </div>
-        )}
-      </section>
+  {/* Модальное окно для кейсов */}
+  {activeCase !== null && (
+    <div
+      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+      onClick={() => setActiveCase(null)}
+    >
+      <div
+        className="bg-gray-700 border border-gray-600 rounded-xl p-8 max-w-lg w-full relative animate-fadeIn"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          className="absolute top-4 right-4 text-white text-xl font-bold"
+          onClick={() => setActiveCase(null)}
+        >
+          ×
+        </button>
+        <img
+          src={`/case${activeCase + 1}.jpg`}
+          alt={`Case ${activeCase + 1}`}
+          className="rounded-lg mb-4 w-full h-auto"
+        />
+        <p className="text-gray-300 text-lg">{cases[activeCase].text}</p>
+        <Button
+          variant="ghost"
+          onClick={() => setActiveCase(null)}
+          className="border border-white/30 text-white hover:bg-white/10 mt-4"
+        >
+          Закрыть
+        </Button>
+      </div>
+    </div>
+  )}
+</section>
 
       {/* Услуги */}
       <section className="max-w-7xl mx-auto mb-16">
