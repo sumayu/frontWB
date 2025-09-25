@@ -261,7 +261,7 @@ export default function Home() {
           </p>
           
           <a 
-            href="https://t.me/Fooskos" 
+            href="https://t.me/AnnaEXP" 
             target="_blank" 
             rel="noopener noreferrer"
             className="group"
