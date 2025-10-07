@@ -3,20 +3,140 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Briefcase, Target, Search, TrendingUp, Settings, Zap, Users, Star, X, Maximize2 } from "lucide-react";
+import { Briefcase, Target, Search, TrendingUp, Settings, Zap, Users, Star, X, Maximize2, CheckCircle2, ArrowRight, Clock, Percent, BarChart3 } from "lucide-react";
 
 export default function Home() {
-  const [activeService, setActiveService] = useState<number | null>(null);
-  const [activeCase, setActiveCase] = useState<number | null>(null);
-  const [fullImage, setFullImage] = useState<string | null>(null);
+const [activeService, setActiveService] = useState<number | null>(null);
+const [activeCase, setActiveCase] = useState<number | null>(null);
+const [fullImage, setFullImage] = useState<string | null>(null);
 
   const services = [
-    { title: "Работа под ключ", description: "Получите готовый бизнес с нуля", icon: Briefcase, details: "Подробнее в лс" },
-    { title: "Настройка рекламы", description: "Внутренняя и внешняя реклама WB", icon: Target, details: "Поисковое продвижение и РК" },
-    { title: "Подбор товара", description: "Анализ и поиск прибыльных ниш", icon: Search, details: "Исследование конкурентов" },
-    { title: "SEO-оптимизация", description: "Улучшение позиций в поиске", icon: TrendingUp, details: "Семантика и описания" },
-    { title: "Ведение кабинетов", description: "Постоянная поддержка аккаунтов", icon: Settings, details: "Долгосрочное сотрудничество" },
-    { title: "Разовые услуги", description: "Любая сфера работы с WB", icon: Zap, details: "Гибкий подход" },
+    { 
+      title: "Работа под ключ", 
+      description: "Получите готовый бизнес с нуля", 
+      icon: Briefcase, 
+      gradient: "from-blue-500/20 to-purple-500/20",
+      iconColor: "text-blue-400",
+      details: {
+        fullDescription: "Полный цикл запуска и развития бизнеса на Wildberries. От выбора ниши до первых продаж и масштабирования.",
+        features: [
+          "Анализ рынка и подбор прибыльной ниши",
+          "Поиск надежных поставщиков",
+          "Создание и оптимизация карточек товаров",
+          "Настройка всех видов рекламы",
+          "Логистика и работа со складами",
+          "Ежедневный мониторинг и аналитика"
+        ],
+        price: "от 50 000 ₽",
+        timing: "Запуск за 14-21 день",
+        result: "Готовый магазин с первыми продажами"
+      }
+    },
+    { 
+      title: "Настройка рекламы", 
+      description: "Внутренняя и внешняя реклама WB", 
+      icon: Target, 
+      gradient: "from-orange-500/20 to-red-500/20",
+      iconColor: "text-orange-400",
+      details: {
+        fullDescription: "Профессиональная настройка и ведение рекламных кампаний для максимального ROI и роста продаж.",
+        features: [
+          "Настройка поисковой рекламы WB",
+          "Рекламные кампании (РК, Автокампании)",
+          "Таргетированная реклама в каталоге",
+          "A/B тестирование объявлений",
+          "Оптимизация ставок и бюджета",
+          "Еженедельные отчеты по эффективности"
+        ],
+        price: "от 25 000 ₽",
+        timing: "Первые результаты через 3-5 дней",
+        result: "Рост продаж на 200-400%"
+      }
+    },
+    { 
+      title: "Подбор товара", 
+      description: "Анализ и поиск прибыльных ниш", 
+      icon: Search, 
+      gradient: "from-green-500/20 to-emerald-500/20",
+      iconColor: "text-green-400",
+      details: {
+        fullDescription: "Глубокий анализ рынка WB для поиска товаров с высокой маржинальностью и стабильным спросом.",
+        features: [
+          "Анализ 50+ ниш на прибыльность",
+          "Исследование конкурентов",
+          "Расчет юнит-экономики",
+          "Прогноз продаж и окупаемости",
+          "Поиск поставщиков и производителей",
+          "Детальный отчет с рекомендациями"
+        ],
+        price: "от 15 000 ₽",
+        timing: "Анализ за 5-7 дней",
+        result: "3-5 готовых ниш для запуска"
+      }
+    },
+    { 
+      title: "SEO-оптимизация", 
+      description: "Улучшение позиций в поиске", 
+      icon: TrendingUp, 
+      gradient: "from-purple-500/20 to-pink-500/20",
+      iconColor: "text-purple-400",
+      details: {
+        fullDescription: "Комплексная оптимизация карточек товаров для выхода в ТОП поисковой выдачи Wildberries.",
+        features: [
+          "Сбор и анализ семантического ядра",
+          "Оптимизация названий и описаний",
+          "Улучшение визуального контента",
+          "Работа с отзывами и рейтингом",
+          "Мониторинг позиций в поиске",
+          "Рекомендации по улучшению"
+        ],
+        price: "от 10 000 ₽",
+        timing: "Первые результаты через 7-14 дней",
+        result: "Выход в ТОП-10 по целевым запросам"
+      }
+    },
+    { 
+      title: "Ведение кабинетов", 
+      description: "Постоянная поддержка аккаунтов", 
+      icon: Settings, 
+      gradient: "from-cyan-500/20 to-blue-500/20",
+      iconColor: "text-cyan-400",
+      details: {
+        fullDescription: "Полное ежедневное управление вашим магазином на WB с постоянной оптимизацией всех процессов.",
+        features: [
+          "Ежедневный мониторинг продаж",
+          "Управление остатками и логистикой",
+          "Ведение рекламных кампаний",
+          "Работа с отзывами и вопросами",
+          "Аналитика и отчетность",
+          "Постоянная оптимизация"
+        ],
+        price: "от 30 000 ₽/мес",
+        timing: "Долгосрочное сотрудничество",
+        result: "Стабильный рост продаж"
+      }
+    },
+    { 
+      title: "Разовые услуги", 
+      description: "Любая сфера работы с WB", 
+      icon: Zap, 
+      gradient: "from-yellow-500/20 to-orange-500/20",
+      iconColor: "text-yellow-400",
+      details: {
+        fullDescription: "Решение конкретных задач и точечные улучшения вашего магазина на Wildberries.",
+        features: [
+          "Аудит текущего кабинета",
+          "Разовая настройка рекламы",
+          "Создание карточек товаров",
+          "Консультации по стратегии",
+          "Решение технических проблем",
+          "Обучение команды"
+        ],
+        price: "от 5 000 ₽",
+        timing: "Гибкий формат",
+        result: "Решение конкретной задачи"
+      }
+    },
   ];
 
   const cases = [
@@ -322,52 +442,157 @@ export default function Home() {
 
       {/* Услуги */}
       <section className="max-w-7xl mx-auto mb-16">
-        <h2 className="text-4xl font-bold text-center mb-8">Наши услуги</h2>
+        <h2 className="text-4xl font-bold text-center mb-4">Наши услуги</h2>
+        <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+          Полный спектр услуг для успешного развития вашего бизнеса на Wildberries
+        </p>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <Card
               key={index}
-              className="group cursor-pointer bg-gray-700 border border-gray-600 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/10"
+              className="group cursor-pointer bg-gradient-to-br from-gray-700/80 to-gray-800/80 border border-gray-600/50 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/10 backdrop-blur-sm"
               onClick={() => setActiveService(index)}
             >
               <CardContent className="p-8">
-                <div className="w-14 h-14 bg-gray-700/50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-7 h-7 text-white" />
+                <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <service.icon className={`w-8 h-8 ${service.iconColor}`} />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-gray-200 transition-colors">
+
+                <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-gray-100 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-gray-300 mb-4 leading-relaxed">{service.description}</p>
+
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center gap-2 text-sm">
+                    <Percent className="w-4 h-4 text-green-400" />
+                    <span className="text-gray-300">{service.details.price}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <Clock className="w-4 h-4 text-blue-400" />
+                    <span className="text-gray-300">{service.details.timing}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <BarChart3 className="w-4 h-4 text-purple-400" />
+                    <span className="text-gray-300">{service.details.result}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 text-blue-400 font-semibold group-hover:gap-3 transition-all">
+                  <span>Подробнее</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Модальное окно для услуг */}
+        {/* Улучшенное модальное окно для услуг */}
         {activeService !== null && (
           <div
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4"
             onClick={() => setActiveService(null)}
           >
             <div
-              className="bg-gray-700 border border-gray-600 rounded-xl p-8 max-w-lg w-full relative animate-fadeIn"
+              className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl border border-gray-700/50 shadow-2xl p-8 max-w-3xl w-full relative max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute top-4 right-4 text-white text-xl font-bold"
+                className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-gray-800/80 hover:bg-gray-700 text-white transition-colors"
                 onClick={() => setActiveService(null)}
               >
-                ×
+                <X className="w-5 h-5" />
               </button>
-              <h3 className="text-2xl font-bold mb-4 text-white">{services[activeService].title}</h3>
-              <p className="text-gray-300 mb-4">{services[activeService].details}</p>
-              <Button
-                variant="ghost"
-                onClick={() => setActiveService(null)}
-                className="border border-white/30 text-white hover:bg-white/10"
-              >
-                Закрыть
-              </Button>
+
+              <div className={`w-20 h-20 bg-gradient-to-br ${services[activeService].gradient} rounded-2xl flex items-center justify-center mb-6`}>
+                {React.createElement(services[activeService].icon, {
+                  className: `w-10 h-10 ${services[activeService].iconColor}`
+                })}
+              </div>
+
+              <h3 className="text-4xl font-bold mb-4 text-white">
+                {services[activeService].title}
+              </h3>
+
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                {services[activeService].details.fullDescription}
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Percent className="w-5 h-5 text-green-400" />
+                    <div className="text-gray-400 text-sm">Стоимость</div>
+                  </div>
+                  <div className="text-white font-bold text-lg">
+                    {services[activeService].details.price}
+                  </div>
+                </div>
+
+                <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Clock className="w-5 h-5 text-blue-400" />
+                    <div className="text-gray-400 text-sm">Сроки</div>
+                  </div>
+                  <div className="text-white font-bold text-lg">
+                    {services[activeService].details.timing}
+                  </div>
+                </div>
+
+                <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                  <div className="flex items-center gap-2 mb-2">
+                    <BarChart3 className="w-5 h-5 text-purple-400" />
+                    <div className="text-gray-400 text-sm">Результат</div>
+                  </div>
+                  <div className="text-white font-bold text-lg">
+                    {services[activeService].details.result}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <h4 className="text-xl font-bold text-white mb-4">Что входит в услугу:</h4>
+                <div className="space-y-3">
+                  {services[activeService].details.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                        <CheckCircle2 className="w-4 h-4 text-green-400" />
+                      </div>
+                      <span className="text-gray-300 leading-relaxed">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <a 
+         href="https://t.me/AnnaEXP" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                >
+                  <Button 
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-6 text-lg"
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      Заказать услугу
+                      <ArrowRight className="w-5 h-5" />
+                    </span>
+                  </Button>
+                </a>
+
+                <Button
+                  variant="outline"
+                  onClick={() => setActiveService(null)}
+                  className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white py-6 px-8"
+                >
+                  Закрыть
+                </Button>
+              </div>
             </div>
           </div>
         )}
@@ -398,8 +623,8 @@ export default function Home() {
           </p>
           
           <a 
-            href="https://t.me/AnnaEXP" 
-            target="_blank" 
+  href="https://t.me/AnnaEXP" 
+              target="_blank" 
             rel="noopener noreferrer"
             className="group"
           >
